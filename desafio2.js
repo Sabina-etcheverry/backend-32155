@@ -101,6 +101,7 @@ const main = async () => {
 
     console.log("3: Buscamos producto por id");
     const buscarId = await productos.getById(2);
+    console.log(buscarId);
     console.log("--------------------------------------");
 
 
