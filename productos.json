@@ -1,0 +1,22 @@
+[
+	{
+		"titulo": "Polera",
+		"precio": 1200,
+		"id": 1
+	},
+	{
+		"titulo": "Jean con Rotura",
+		"precio": 2200,
+		"id": 2
+	},
+    {
+        "titulo": "Remera",
+        "precio": 1000,
+        "id": 3
+    },
+    {
+        "titulo": "Joggin",
+        "precio": 2000,
+        "id":4
+    }
+]
