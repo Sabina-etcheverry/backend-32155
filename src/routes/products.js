@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler')
 const { Router } = require('express');
-const { ProductsController } = require('../controller/productos');
+const { ProductsController } = require('../controller/products');
 
 const router = Router();
 
