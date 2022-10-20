@@ -3,15 +3,17 @@ const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 const path = require('path');
 
+const filePath = path.resolve(__dirname, '../products.json')
+
 class ProductsAPI {
 
-    constructor(products) {
-        this.products = `./${products}.json`
+    constructor(archivo) {
+        this.archivo = `./${archivo}.json`
     }
 
     async exists(id) {
 
-        const indice = await this.products.findIndex(aProduct => aProduct.id == id)
+        const indice = await this.archivo.findIndex(aProduct => aProduct.id == id)
 
         console.log(indice);
         return indice >= 0;
@@ -19,14 +21,14 @@ class ProductsAPI {
 
     async read() {
 
-        const data = await fs.promises.readFile(this.products, 'utf-8');
+        const data = await fs.promises.readFile(this.archivo, 'utf-8');
         return JSON.parse(data);
     }
 
     async saveProducts(products) {
 
         const data = JSON.stringify(products, null, '\t')
-        await fs.promises.writeFile(this.products, data)
+        await fs.promises.writeFile(this.archivo, data)
     }
 
     validateBody(data) {
@@ -60,6 +62,8 @@ class ProductsAPI {
         productos.push(nuevoProducto);
 
         await this.saveProducts(productos);
+
+        return nuevoProducto.id;
     }
 
     async getById(id) {
@@ -115,7 +119,7 @@ class ProductsAPI {
     }
 }
 
-const instanciaProductsApi = new ProductsAPI();
+const instanciaProductsApi = new ProductsAPI(filePath);
 
 module.exports = {
 	ProductsController : instanciaProductsApi

@@ -8,11 +8,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', mainRouter);
 
-app.get('/', (req, res) => {
-	res.json({
-		msg: 'Lista la app'
-	})
-})
 
 app.use((err, req, res, next) => {
 		const status = err.status || 500;
