@@ -4,9 +4,9 @@ const { ProductsController } = require('../controller/products');
 
 const router = Router();
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
 	res.json({
-		msg: ProductsController.getAll()
+		msg: await ProductsController.getAll()
 	})
 })
 
