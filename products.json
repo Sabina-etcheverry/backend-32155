@@ -1,18 +1,22 @@
 [
 	{
 		"title": "Polera",
-		"price": 1200
+		"price": 1200,
+        "id": 1
 	},
 	{
 		"title": "Jean con Rotura",
-		"price": 2200
+		"price": 2200,
+        "id": 2
 	},
     {
         "title": "Remera",
-        "price": 1000
+        "price": 1000,
+        "id": 3
     },
     {
         "title": "Joggin",
-        "price": 2000
+        "price": 2000,
+        "id": 4
     }
 ]

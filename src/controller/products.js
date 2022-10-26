@@ -87,7 +87,7 @@ class ProductsAPI {
 		const oldProduct =  productos[indice];
 
 		const nuevoProducto = {
-			id: oldProduct.id,
+			id: oldProduct.uuidv4(),
 			title: datanueva.title,
 			price: datanueva.price,
 		}
