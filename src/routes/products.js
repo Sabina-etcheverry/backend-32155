@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
 //funcion async para el get
 const funcionAsyncGet = async (req,res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
 
     const product = await ProductsController.getById(id)
     res.json({
@@ -23,7 +23,7 @@ const funcionAsyncGet = async (req,res) => {
 //funcion async para el put 
 const funcionAsyncPut = async (req, res) => {
 	
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
 	const { body }  = req
 
 	const data = await ProductsController.findByIdAndUpdate(id, body);
@@ -43,10 +43,11 @@ const funcionAsyncPost = async (req,res) => {
 
 //funcion async para el delete
 const funcionAsyncDelete = async (req,res) => {
-    const id = await req.params.id;
+    const id = parseInt(req.params.id);
+    await ProductsController.deleteById(id);
 
 	res.json({
-		msg: ProductsController.deleteById(id)
+		msg: 'Producto eliminado'
 	})
 }
 

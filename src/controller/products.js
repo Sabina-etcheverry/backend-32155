@@ -3,33 +3,26 @@ const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 const path = require('path');
 
-const filePath = path.resolve(__dirname, '../products.json')
-
 class ProductsAPI {
-
-    constructor(archivo) {
-        this.archivo = `./${archivo}.json`
-    }
-
-    async exists(id) {
-
-        const indice = await this.archivo.findIndex(aProduct => aProduct.id == id)
-
-        console.log(indice);
-        return indice >= 0;
-    }
 
     async read() {
 
-        const data = await fs.promises.readFile(this.archivo, 'utf-8');
+        const data = await fs.promises.readFile('./products.json', 'utf-8');
         return JSON.parse(data);
     }
 
     async saveProducts(products) {
 
-        const data = JSON.stringify(products, null, '\t')
-        await fs.promises.writeFile(this.archivo, data)
+        fs.promises.writeFile('./products.json',JSON.stringify(products, null, '\t'), 'utf-8');
     }
+
+    async exists(id) {
+        const data = await this.read()
+        const indice = data.findIndex(aProduct => aProduct.id == id)
+
+        return indice >= 0;
+    }
+
 
     validateBody(data) {
         if (!data.title || !data.price || typeof data.title !== 'string' || typeof data.price !== 'number') throw createError(400, 'Datos invalidos');
@@ -54,16 +47,14 @@ class ProductsAPI {
         }
 
         const nuevoProducto = {
-            titulo: data.titulo,
-            precio: data.precio,
+            title: data.title,
+            price: data.price,
             id: uuidv4(),
         }
 
         productos.push(nuevoProducto);
 
-        await this.saveProducts(productos);
-
-        return nuevoProducto.id;
+        return await this.saveProducts(productos);
     }
 
     async getById(id) {
@@ -72,13 +63,13 @@ class ProductsAPI {
 
         const productos = await this.read();
 
-        const indice = productos.findIndex((data) => data.id === id);
+        const indice = productos.find((data) => data.id === id);
 
-        if (indice < 0) {
+        if (!indice) {
             throw createError(404, 'El producto no existe');
         }
 
-        return productos[indice];
+        return indice;
     }
 
     async findByIdAndUpdate(id, datanueva) {
@@ -86,12 +77,14 @@ class ProductsAPI {
         const exist = this.exists(id);
 
 		if(!exist) throw createError(404, 'El producto no existe');
+        
+        const productos = await this.getAll();
 
 		this.validateBody(datanueva);
 
-		const indice = await this.productos.findIndex(aProduct =>  aProduct.id == id)
+		const indice = productos.findIndex(aProduct =>  aProduct.id == id)
 
-		const oldProduct =  this.productos[indice];
+		const oldProduct =  productos[indice];
 
 		const nuevoProducto = {
 			id: oldProduct.id,
@@ -99,27 +92,27 @@ class ProductsAPI {
 			price: datanueva.price,
 		}
 
-		this.productos.splice(indice, 1, nuevoProducto);
+		productos.splice(indice, 1, nuevoProducto);
 
-		return nuevoProducto;
+		await this.saveProducts(productos);
+        return nuevoProducto;
 	}
 
     async deleteById(id) {
 
         const exist = this.exists(id);
-		if(!exist) return;
+		
+        if(!exist) return;
 
         const productos = await this.read();
 
-        const indice = productos.findIndex((unProducto) => unProducto.id === id);
+        productos.splice(0);
 
-        productos.splice(indice, 1);
-
-        await this.saveProducts(productos);
+        return await this.saveProducts(productos);
     }
 }
 
-const instanciaProductsApi = new ProductsAPI(filePath);
+const instanciaProductsApi = new ProductsAPI();
 
 module.exports = {
 	ProductsController : instanciaProductsApi

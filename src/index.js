@@ -1,4 +1,4 @@
-const Server = require('./services/server')
+const Server = require('../src/services/server')
 
 const puerto = 8080;
 Server.listen(puerto, () => {
