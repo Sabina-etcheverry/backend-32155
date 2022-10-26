@@ -36,10 +36,11 @@ class ProductsAPI {
 
     async save(data) {
 
-        this.validateBody(data);
+        // this.validateBody(data);
 
         const productos = await this.read();
 
+        let id = 1
 
         if (productos.length) {
 
@@ -49,7 +50,7 @@ class ProductsAPI {
         const nuevoProducto = {
             title: data.title,
             price: data.price,
-            id: uuidv4(),
+            id: data.id
         }
 
         productos.push(nuevoProducto);

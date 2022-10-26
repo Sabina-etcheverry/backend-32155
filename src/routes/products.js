@@ -37,7 +37,7 @@ const funcionAsyncPost = async (req,res) => {
     const { body }  = req
         const data = await ProductsController.save(body);
         res.json({
-            msg: `Nuevo producto agregado ${data}`
+            msg: 'Nuevo producto agregado'
         })
 }
 
