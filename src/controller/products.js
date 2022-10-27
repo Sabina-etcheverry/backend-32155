@@ -49,7 +49,7 @@ class ProductsAPI {
         const nuevoProducto = {
             title: data.title,
             price: data.price,
-            id: data.id
+            id: id
         }
 
         productos.push(nuevoProducto);
@@ -84,10 +84,10 @@ class ProductsAPI {
 
 		const indice = productos.findIndex(aProduct =>  aProduct.id == id)
 
-		const oldProduct =  productos[indice];
+		// const oldProduct =  productos[indice];
 
 		const nuevoProducto = {
-			id: oldProduct.id,
+			id: id,
 			title: datanueva.title,
 			price: datanueva.price,
 		}

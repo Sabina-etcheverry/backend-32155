@@ -10,7 +10,13 @@
 		"id": 2
 	},
 	{
-		"title": "Remera manga larga",
-		"price": "1200"
+		"title": "Polera",
+		"price": "1200",
+		"id": 3
+	},
+	{
+		"title": "Jean negro",
+		"price": "1500",
+		"id": 4
 	}
 ]
