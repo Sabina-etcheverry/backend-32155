@@ -1,5 +1,4 @@
 const createError = require('http-errors')
-const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 const path = require('path');
 
@@ -40,7 +39,7 @@ class ProductsAPI {
 
         const productos = await this.read();
 
-        let id = 1
+        let id;
 
         if (productos.length) {
 
@@ -88,7 +87,7 @@ class ProductsAPI {
 		const oldProduct =  productos[indice];
 
 		const nuevoProducto = {
-			id: oldProduct.uuidv4(),
+			id: oldProduct.id,
 			title: datanueva.title,
 			price: datanueva.price,
 		}
