@@ -1,0 +1,42 @@
+*{
+    box-sizing: border-box;
+}
+.flex{
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.tarjeta {
+    text-align: left;
+    max-width: 350px;
+}
+
+.maximoAncho{
+    margin: 0 auto;
+}
+
+.colorTexto a{
+    color: white;
+
+}
+
+.cargaProducto{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tituloCentrado {
+    text-align: center;
+}
+
+.Centrado {
+    display: flex;
+    justify-content: center;
+}
+
+.separacion {
+    margin-top: 20px;
+}
+

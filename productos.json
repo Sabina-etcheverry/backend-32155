@@ -1,0 +1,27 @@
+[
+	{
+		"title": "Polera",
+		"price": 1200,
+		"id": 1
+	},
+	{
+		"title": "Jean",
+		"price": 3000,
+		"id": 2
+	},
+	{
+		"title": "Remera",
+		"price": "1200",
+		"id": 3
+	},
+	{
+		"title": "Jean ",
+		"price": "1500",
+		"id": 4
+	},
+	{
+		"title": "Remera Manga Corta",
+		"price": "1100",
+		"id": 5
+	}
+]

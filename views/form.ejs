@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Cargar Productos</title>
+</head>
+
+<body>
+    <div class="maximoAncho"></div>
+    <%- include('partials/navbar');%>
+        </div>
+        <form id="formProductos" class="cargaProducto" method="POST" action="/api/productos">
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Titulo Producto</label>
+                <input type="text" class="form-control" name="title" id="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Precio Producto</label>
+                <input type="number" class="form-control" name="price" id="price" required>
+            </div>
+            <input type="submit">
+        </form>
+
+        <div id="productos" class="flex"></div>
+
+        <h2 class="tituloCentrado separacion" Centro de Mensajes></h2>
+        <div class="container-fluid Centrado">
+            <div(class="row")>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                    <form action="" method="" class="" id="chatForm">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email"
+                                required>
+                            <label for="foto" Email></label>
+                            <div class="form-floating mb-3" id="chat">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="message" placeholder="Mensaje"
+                                                name="message" required>
+                                            <label for="mesage" id="message" Mensaje></label>
+                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                                                <div class="form-floating mb-3">
+                                                    <input class="btn btn-info" type="submit" value="Enviar">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+        </div>
+        </div>
+
+        <script src="../socket.io/socket.io.js"></script>
+        <script src="../js/main.js"></script>
+</body>
+
+</html>
