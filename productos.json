@@ -23,5 +23,10 @@
 		"title": "Remera Manga Corta",
 		"price": "1100",
 		"id": 5
+	},
+	{
+		"title": "Campera",
+		"price": "4000",
+		"id": 6
 	}
 ]

@@ -36,7 +36,7 @@ socket.on('Server:TodosLosProductos', async  (data)=>{
                </div>
                <div class="col-md-7">
                  <div class="card-body">
-                 <h5 class="card-title">${product.title}</h5>
+                 <h6 class="card-title">${product.title}</h6>
                  <p class="card-text">Precio $${product.price}</p>
                  </div>
                </div>
